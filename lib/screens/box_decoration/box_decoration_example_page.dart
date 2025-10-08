@@ -46,13 +46,61 @@ class BoxDecorationExamplePage extends StatelessWidget {
             child: Container(
               height: 250,
               decoration: BoxDecoration(
-                  color: Colors.blue.shade400,
-                  border: Border.all(color: Colors.grey.shade300, width: 3.0),
-                  image: DecorationImage(
-                    image: const AssetImage('assets/images/full-bloom.png'),
-                    fit: BoxFit.cover,
+                color: Colors.blue.shade400,
+                border: Border.all(color: Colors.grey.shade300, width: 3.0),
+                image: DecorationImage(
+                  image: const AssetImage('assets/images/full-bloom.png'),
+                  fit: BoxFit.cover,
+                ),
+                shape: BoxShape.rectangle,
+              ),
+            ),
+          ),
+          SizedBox(height: 20),
+          Padding(
+            padding: EdgeInsets.only(left: 10.0, right: 10.0),
+            child: Container(
+              width: 250,
+              height: 150,
+              decoration: BoxDecoration(
+                // 1. Dùng gradient làm nền
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [Color(0xFF84fab0), Color(0xFF8fd3f4)],
+                ),
+                // 2. Bo tròn các góc
+                borderRadius: BorderRadius.circular(20.0),
+                // 3. Thêm viền trắng mỏng
+                border: Border.all(
+                  color: Colors.white.withOpacity(0.5),
+                  width: 1.5,
+                ),
+                // 4. Thêm hai lớp bóng để tạo chiều sâu
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.15),
+                    spreadRadius: 1,
+                    blurRadius: 8,
+                    offset: Offset(4, 4),
                   ),
-                  shape: BoxShape.rectangle
+                  BoxShadow(
+                    color: Colors.white.withOpacity(0.7),
+                    spreadRadius: 1,
+                    blurRadius: 8,
+                    offset: Offset(-4, -4),
+                  ),
+                ],
+              ),
+              child: Center(
+                child: Text(
+                  'Styled Card',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ),
           ),
